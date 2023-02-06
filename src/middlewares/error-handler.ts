@@ -13,9 +13,7 @@ export default (
   console.warn('error', '', {
     message: 'Error Handler',
     action: `${req.method} : ${req.baseUrl} ${req.url}`,
-    body: {
-      ...req.body,
-    },
+    query: { ...req.query },
     err,
   });
 
