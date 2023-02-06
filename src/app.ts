@@ -9,9 +9,6 @@ const app = express();
 
 app.use(express.json());
 initRoutes(app);
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
 app.use(errorHandler);
 
 export default app;

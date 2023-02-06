@@ -15,8 +15,6 @@ export default (
     action: `${req.method} : ${req.baseUrl} ${req.url}`,
     body: {
       ...req.body,
-      secretKey: undefined,
-      publicKey: undefined,
     },
     err,
   });
