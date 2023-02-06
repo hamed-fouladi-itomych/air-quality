@@ -10,10 +10,7 @@ export class AirQualityService {
     this.iqairClient = new IqairClient();
   }
 
-  async getAirQuality(
-    longitude: number,
-    latitude: number,
-  ) {
+  async getAirQuality(longitude: number, latitude: number) {
     const airQuality: AirQuality = await this.iqairClient.getAirQuality(
       longitude,
       latitude,
