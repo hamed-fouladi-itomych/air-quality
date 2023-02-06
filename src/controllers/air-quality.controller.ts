@@ -9,32 +9,28 @@ export class AirQualityController {
   }
 
   getAirQuality = async (req: Request, res: Response) => {
-      const longitude = Number(req.query.longitude);
-      const latitude = Number(req.query.latitude);
+    const longitude = Number(req.query.longitude);
+    const latitude = Number(req.query.latitude);
 
-      const pollution: PollutionResponse =
-        await this.airQualityService.getAirQuality(longitude, latitude);
+    const pollution: PollutionResponse =
+      await this.airQualityService.getAirQuality(longitude, latitude);
 
-      res.status(200).send({
-        Result: {
-          pollution,
-        },
-      });
-  }
+    res.status(200).send({
+      Result: {
+        pollution,
+      },
+    });
+  };
 
   getMostPolluted = async (req: Request, res: Response): Promise<void> => {
-    try {
-      const city: string = req.query.city as string;
-      if (!city) {
-        res.status(400).send('city parameter is required');
-        return;
-      }
-
-      const result = await this.airQualityService.getMostPolluted(city);
-
-      res.status(200).send({ result });
-    } catch (err) {
-      res.status(err.status).send(err.message);
+    const city: string = req.query.city as string;
+    if (!city) {
+      res.status(400).send('city parameter is required');
+      return;
     }
-  }
+
+    const result = await this.airQualityService.getMostPolluted(city);
+
+    res.status(200).send({ result });
+  };
 }

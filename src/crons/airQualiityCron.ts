@@ -12,10 +12,7 @@ const job = cron.schedule('* * * * *', async () => {
   try {
     console.log('task is running');
 
-    await airQualityService.getAirQuality(
-      2.352222,
-      48.856613,
-    );
+    await airQualityService.getAirQuality(2.352222, 48.856613);
   } catch (err) {
     console.log('Cron task Error: ', err);
   }
